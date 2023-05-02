@@ -1,0 +1,22 @@
+import board
+import adafruit_dht
+import sqlite3
+import time
+dhtDevice = adafruit_dht.DHT22(board.D4, use_pulseio=False)
+conn=sqlite3.connect('temp.db')
+mycursor = conn.cursor()
+while True:
+	temp_C=0
+	temp_F=0
+	hum=0
+	try:
+		temp_C=dhtDevice.temperature
+		temp_F=dhtDevice.temperature * 9 / 5 + 32
+		hum=dhtDevice.humidity
+	finally:
+		mycursor.execute("Insert into dhsens (temp_C,temp_F,hum) values (?,?,?)",temp_C,temp_F,hum)
+		conn.commit()
+		time.sleep()
+
+
+
