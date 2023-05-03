@@ -1,0 +1,10 @@
+1. LED,Buzzer(buzzer= Buzzer(BUZZER_PIN),Push button : Ground and GPIO
+2. 7 segment display : common anode - top to voltage, common cathode - bottom to ground
+3. PIR sesor : VOltage, GPIO, Ground
+4. Ultrasonic distance sensor : Voltage, Trigger, Echo, Ground, formula = round(pulse_duration*17150,2)
+5. Temperature sensor : import board
+				import adafruit_dht
+				import mysql.connector
+				dhtDevice = adafruit_dht.DHT22(board.D4, use_pulseio=False)
+				dhtDevice.temperature,humidity
+	HAs 3 pins, VOltage, Ground, GPIO
